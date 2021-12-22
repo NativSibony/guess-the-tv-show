@@ -7,7 +7,6 @@ interface Props {
 }
 
 const GuessingCard: React.FC<Props> = ({ movies }) => {
-  console.log(movies);
   return (
     <div>{movies.length > 0 ? <GuessingBar movies={movies} /> : null}</div>
   );
