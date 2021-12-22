@@ -1,6 +1,6 @@
-# Getting Started with Create React App
+# Guess the tv show game
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project was created as part of a job assignment.
 
 ## Available Scripts
 
