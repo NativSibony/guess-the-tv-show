@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import { fetchMovies, Movie } from "./utils/ApiController";
+import "./styles/style.css";
+import GuessingCard from "./components/GuessingCard";
+import GuessingForm from "./components/GuessingForm";
 
-function App() {
+const API_KEY = process.env.REACT_APP_API_KEY;
+const App = () => {
+  const [movies, setMovies] = useState<Movie[]>([]);
+  /* Getting the movie list from our api controller */
+  useEffect(() => {
+    fetchMovies(API_KEY).then((res) => setMovies(res));
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="Header">
+        <img alt="tvlogo" src="/tv128.png"></img>
+        <div className="Header subtitle">
+          <h1>Guess</h1>
+          <h2>The TV Show Name</h2>
+        </div>
+      </div>
+      <div className="Content">
+        <GuessingCard movies={movies} />
+      </div>
+      <div className="Footer">
+        <GuessingForm />
+      </div>
     </div>
   );
-}
+};
 
 export default App;
