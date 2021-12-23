@@ -87,6 +87,7 @@ body,
 }
 
 .guessForm input[type="text"] {
+  width: 100%;
   outline: none;
   padding: 10px;
   font-size: 30px;
