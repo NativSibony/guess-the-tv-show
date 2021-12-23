@@ -9,7 +9,9 @@ const GuessingForm = () => {
         maxLength={1}
         placeholder="Enter a letter . . . ⏎"
       />
-      <button className="guessButton">GUESS</button>
+      <button className="guessButton" style={{ width: "100%" }}>
+        GUESS
+      </button>
       <div style={{ display: "flex", justifyContent: "space-between" }}>
         <button className="guessButton">HINT</button>
         <button className="guessButton">STATISTICS</button>
