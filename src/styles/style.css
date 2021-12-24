@@ -15,6 +15,7 @@ body,
   background-attachment: fixed;
   background-size: cover;
   color: #e7e7e7;
+  width: 100%;
 }
 
 .App {
@@ -22,7 +23,7 @@ body,
   flex-direction: column;
   justify-content: center;
   margin-top: 50px;
-  row-gap: 100px;
+  row-gap: 30px;
 }
 
 .Header {
@@ -49,6 +50,7 @@ body,
 
 .word {
   display: block;
+  text-align: center;
   white-space: nowrap;
 }
 
@@ -57,7 +59,7 @@ body,
   color: transparent;
   border-bottom: 5px solid #f6d269;
   margin: 0 10px;
-  font-size: 50px;
+  font-size: 3em;
   padding: 10px;
   transition: 0.5s;
   text-transform: uppercase;
@@ -72,7 +74,7 @@ body,
 
 .guessButton {
   border: none;
-  font-size: 30px;
+  font-size: 20px;
   padding: 10px 20px;
   cursor: pointer;
   background: #f6d269;
@@ -103,8 +105,11 @@ body,
   justify-content: center;
 }
 
-@media screen and (max-width: 456px) {
+@media screen and (max-width: 500px) {
   .Header.subtitle {
     text-align: center;
+  }
+  .letter {
+    font-size: 1em;
   }
 }

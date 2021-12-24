@@ -7,6 +7,7 @@ import GuessingForm from "./components/GuessingForm";
 const API_KEY = process.env.REACT_APP_API_KEY;
 const App = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
+  const [index, setIndex] = useState<number>(0);
   /* Getting the movie list from our api controller */
   useEffect(() => {
     fetchMovies(API_KEY).then((res) => setMovies(res));
@@ -22,7 +23,7 @@ const App = () => {
         </div>
       </div>
       <div className="Content">
-        <GuessingCard movies={movies} />
+        <GuessingCard movies={movies} index={index} setIndex={setIndex} />
       </div>
       <div className="Footer">
         <GuessingForm />

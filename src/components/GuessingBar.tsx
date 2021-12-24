@@ -1,21 +1,37 @@
-import React from "react";
+import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { Movie } from "../utils/ApiController";
 
 interface Props {
   movies: Movie[];
+  index: number;
+  setIndex: Dispatch<SetStateAction<number>>;
 }
 
-const GuessingBar: React.FC<Props> = ({ movies }) => {
+const GuessingBar: React.FC<Props> = ({ movies, index, setIndex }) => {
+  const [wordArray, setWordArray] = useState<string[][]>([]);
+
+  useEffect(() => {
+    const charArray = movies[index].word.map((w) => w.split(""));
+    setWordArray(charArray);
+  }, [index]);
+
   return (
-    <div className="guess">
-      <ul className="word">
-        <li className="letter correct">a</li>
-        <li className="letter">*</li>
-        <li className="letter correct">b</li>
-        <li className="letter">*</li>
-        <li className="letter">*</li>
-      </ul>
-    </div>
+    <ul className="word">
+      {wordArray.length > 0
+        ? wordArray.map((charArray, key) => (
+            <div key={key}>
+              {charArray.map((char, key) => (
+                <li
+                  key={key}
+                  className={char === "_" ? "letter" : "letter correct"}
+                >
+                  {char === "_" ? "*" : char}
+                </li>
+              ))}
+            </div>
+          ))
+        : "loading word..."}
+    </ul>
   );
 };
 
