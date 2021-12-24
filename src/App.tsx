@@ -8,9 +8,17 @@ const API_KEY = process.env.REACT_APP_API_KEY;
 const App = () => {
   const [movies, setMovies] = useState<Movie[]>([]);
   const [index, setIndex] = useState<number>(0);
+  const [match, setMatch] = useState<boolean>(false);
+  const [word, setWord] = useState<string[]>([]);
+  const [life, setLife] = useState<number>(3);
+  const [score, setScore] = useState(0);
   /* Getting the movie list from our api controller */
   useEffect(() => {
-    fetchMovies(API_KEY).then((res) => setMovies(res));
+    //set movie list
+    fetchMovies(API_KEY).then((res) => {
+      setMovies(res);
+      setWord(res[index].word);
+    });
   }, []);
 
   return (
@@ -23,10 +31,18 @@ const App = () => {
         </div>
       </div>
       <div className="Content">
-        <GuessingCard movies={movies} index={index} setIndex={setIndex} />
+        <GuessingCard word={word} score={score} life={life} />
       </div>
       <div className="Footer">
-        <GuessingForm />
+        <GuessingForm
+          movies={movies}
+          index={index}
+          setIndex={setIndex}
+          match={match}
+          setMatch={setMatch}
+          word={word}
+          setWord={setWord}
+        />
       </div>
     </div>
   );

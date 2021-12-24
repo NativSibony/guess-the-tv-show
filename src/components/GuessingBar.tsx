@@ -1,19 +1,16 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
-import { Movie } from "../utils/ApiController";
 
 interface Props {
-  movies: Movie[];
-  index: number;
-  setIndex: Dispatch<SetStateAction<number>>;
+  word: string[];
 }
 
-const GuessingBar: React.FC<Props> = ({ movies, index, setIndex }) => {
+const GuessingBar: React.FC<Props> = ({ word }) => {
   const [wordArray, setWordArray] = useState<string[][]>([]);
 
   useEffect(() => {
-    const charArray = movies[index].word.map((w) => w.split(""));
+    const charArray = word.map((w) => w.split(""));
     setWordArray(charArray);
-  }, [index]);
+  }, [word]);
 
   return (
     <ul className="word">

@@ -1,18 +1,24 @@
 import React, { Dispatch, SetStateAction } from "react";
-import { Movie } from "../utils/ApiController";
 import GuessingBar from "./GuessingBar";
 
 interface Props {
-  movies: Movie[];
-  index: number;
-  setIndex: Dispatch<SetStateAction<number>>;
+  word: string[];
+  score: number;
+  life: number;
 }
 
-const GuessingCard: React.FC<Props> = ({ movies, index, setIndex }) => {
+const GuessingCard: React.FC<Props> = ({ word, score, life }) => {
   return (
     <div className="guess">
-      {movies.length > 0 ? (
-        <GuessingBar movies={movies} index={index} setIndex={setIndex} />
+      {word.length > 0 ? (
+        <>
+          <div style={{ textAlign: "center", marginBottom: "10px" }}>
+            <h1>
+              Score: {score}&emsp;Life: {life}
+            </h1>
+          </div>
+          <GuessingBar word={word} />
+        </>
       ) : null}
     </div>
   );

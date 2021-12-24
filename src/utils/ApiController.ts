@@ -1,10 +1,11 @@
 import { getRandomInt, makeGuessingWord } from "./PreProcess";
 
 export type Movie = {
+  nameArr: string[];
   name: string;
   original_name: string;
   original_language: string;
-  popularity: number;
+  overview: string;
   word: string[];
 };
 
@@ -14,10 +15,12 @@ export const fetchMovies = async (key: string | undefined) => {
     const data = await (await fetch(endpoint)).json();
     return data.results.map((movie: Movie) => {
       return {
-        name: movie.name.replace("'", ""),
+        nameArr: movie.name.replace("'", "").toLowerCase().split(" "),
         original_name: movie.original_name,
         original_language: movie.original_language,
-        popularity: movie.popularity,
+        overview: movie.overview
+          .toLowerCase()
+          .replace(movie.name.toLowerCase(), "*****"),
         word: makeGuessingWord(movie.name),
       };
     });
