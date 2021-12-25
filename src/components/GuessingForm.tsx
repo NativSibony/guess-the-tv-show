@@ -68,7 +68,7 @@ const GuessingForm: React.FC<Props> = ({
     movies![index].nameArr.map((name: string, j) => {
       for (let i = 0; i < name.length; i++) {
         if (name[i] === letter && copyArr[j][i] === "_") {
-          isMatches = !isMatches;
+          if (!isMatches) isMatches = !isMatches;
           copyArr[j] =
             word![j].substring(0, i) + letter + word![j].substring(i + 1);
           setMatch(isMatches);
