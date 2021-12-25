@@ -123,6 +123,24 @@ const GuessingForm: React.FC<Props> = ({
     }
   };
 
+  const handleHint = () => {
+    Swal.fire({
+      text: movies![index].overview,
+      icon: "info",
+      showCloseButton: true,
+    });
+  };
+
+  const handleStatistics = () => {
+    Swal.fire({
+      title: "Game Stats",
+      confirmButtonText: "OK",
+      html:
+        `<p>Your score: <b>${score}</b></p>` +
+        `<p>Number of attempts: <b>${attemts}</b></p>`,
+    });
+  };
+
   useEffect(() => {
     if (match) {
       //pop sucess message
@@ -135,7 +153,6 @@ const GuessingForm: React.FC<Props> = ({
       //a word with spaces as array
       setWord(movies![index].word);
   }, [index, movies, setWord]);
-
   return (
     <div className="guessForm">
       <input
@@ -155,8 +172,12 @@ const GuessingForm: React.FC<Props> = ({
         GUESS
       </button>
       <div style={{ display: "flex", justifyContent: "space-between" }}>
-        <button className="guessButton">HINT</button>
-        <button className="guessButton">STATISTICS</button>
+        <button className="guessButton" onClick={handleHint}>
+          HINT
+        </button>
+        <button className="guessButton" onClick={handleStatistics}>
+          STATISTICS
+        </button>
       </div>
     </div>
   );
