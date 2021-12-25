@@ -6,10 +6,10 @@ import GuessingForm from "./components/GuessingForm";
 
 const API_KEY = process.env.REACT_APP_API_KEY;
 const App = () => {
-  const [movies, setMovies] = useState<Movie[]>([]);
+  const [movies, setMovies] = useState<Movie[] | undefined>([]);
   const [index, setIndex] = useState<number>(0);
   const [match, setMatch] = useState<boolean>(false);
-  const [word, setWord] = useState<string[]>([]);
+  const [word, setWord] = useState<string[] | undefined>([]);
   const [life, setLife] = useState<number>(3);
   const [score, setScore] = useState(0);
   /* Getting the movie list from our api controller */
@@ -17,7 +17,7 @@ const App = () => {
     //set movie list
     fetchMovies(API_KEY).then((res) => {
       setMovies(res);
-      setWord(res[index].word);
+      setWord(res![index].word);
     });
   }, []);
 
@@ -42,6 +42,10 @@ const App = () => {
           setMatch={setMatch}
           word={word}
           setWord={setWord}
+          score={score}
+          setLife={setLife}
+          life={life}
+          setScore={setScore}
         />
       </div>
     </div>

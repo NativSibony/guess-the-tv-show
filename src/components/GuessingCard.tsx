@@ -1,8 +1,8 @@
-import React, { Dispatch, SetStateAction } from "react";
+import React from "react";
 import GuessingBar from "./GuessingBar";
 
 interface Props {
-  word: string[];
+  word: string[] | undefined;
   score: number;
   life: number;
 }
@@ -10,7 +10,7 @@ interface Props {
 const GuessingCard: React.FC<Props> = ({ word, score, life }) => {
   return (
     <div className="guess">
-      {word.length > 0 ? (
+      {word!.length > 0 ? (
         <>
           <div style={{ textAlign: "center", marginBottom: "10px" }}>
             <h1>

@@ -105,6 +105,14 @@ body,
   justify-content: center;
 }
 
+.colored-toast.swal2-icon-success {
+  background-color: #a5dc86 !important;
+}
+
+.colored-toast.swal2-icon-error {
+  background-color: #f27474 !important;
+}
+
 @media screen and (max-width: 500px) {
   .Header.subtitle {
     text-align: center;

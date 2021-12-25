@@ -1,14 +1,14 @@
-import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 
 interface Props {
-  word: string[];
+  word: string[] | undefined;
 }
 
 const GuessingBar: React.FC<Props> = ({ word }) => {
   const [wordArray, setWordArray] = useState<string[][]>([]);
 
   useEffect(() => {
-    const charArray = word.map((w) => w.split(""));
+    const charArray = word!.map((w) => w.split(""));
     setWordArray(charArray);
   }, [word]);
 
