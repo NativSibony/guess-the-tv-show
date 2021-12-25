@@ -77,13 +77,13 @@ const GuessingForm: React.FC<Props> = ({
       setWord(copyArr);
       handlePopUp(isMatches);
     });
-    checkIfWinRound();
+    checkIfWinRound(copyArr);
   };
 
-  const checkIfWinRound = () => {
+  const checkIfWinRound = (copyArr: any) => {
     let isWonRound: boolean = true;
-    for (let i = 0; i < word!.length; i++) {
-      if (word![i].includes("_")) isWonRound = false;
+    for (let i = 0; i < copyArr!.length; i++) {
+      if (copyArr![i].includes("_")) isWonRound = false;
     }
 
     if (isWonRound) {
